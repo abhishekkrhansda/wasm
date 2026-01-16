@@ -1,0 +1,242 @@
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-lg);
+    margin-bottom: var(--space-xl);
+}
+
+@media (max-width: 1024px) {
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Status Bars */
+.status-bars {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+}
+
+.status-bar-item {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+}
+
+.status-bar-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.status-count {
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.status-bar-track {
+    height: 8px;
+    background: var(--bg-tertiary);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+}
+
+.status-bar-fill {
+    height: 100%;
+    border-radius: var(--radius-sm);
+    transition: width var(--transition-slow);
+}
+
+.status-bar-fill.badge-created {
+    background: var(--status-created);
+}
+
+.status-bar-fill.badge-assigned {
+    background: var(--status-assigned);
+}
+
+.status-bar-fill.badge-progress {
+    background: var(--status-progress);
+}
+
+.status-bar-fill.badge-review {
+    background: var(--status-review);
+}
+
+.status-bar-fill.badge-closed {
+    background: var(--status-closed);
+}
+
+/* Priority Grid */
+.priority-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-md);
+}
+
+.priority-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-md);
+    background: var(--bg-tertiary);
+    border-radius: var(--radius-md);
+}
+
+.priority-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.priority-dot.badge-low {
+    background: var(--priority-low);
+}
+
+.priority-dot.badge-medium {
+    background: var(--priority-medium);
+}
+
+.priority-dot.badge-high {
+    background: var(--priority-high);
+}
+
+.priority-dot.badge-critical {
+    background: var(--priority-critical);
+}
+
+.priority-label {
+    flex: 1;
+    color: var(--text-secondary);
+}
+
+.priority-count {
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+/* Case Link */
+.case-link {
+    font-weight: 500;
+    color: var(--accent-primary);
+}
+
+.case-link:hover {
+    text-decoration: underline;
+}
+
+.loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 400px;
+    color: var(--text-secondary);
+}
+
+/* Stat Card Highlight */
+.stat-card-highlight {
+    background: linear-gradient(145deg, rgba(99, 102, 241, 0.15), rgba(139, 92, 246, 0.1));
+    border-color: rgba(99, 102, 241, 0.3);
+}
+
+/* Pending Actions Section */
+.pending-actions-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: var(--space-lg);
+    margin-bottom: var(--space-xl);
+}
+
+.pending-card {
+    background: linear-gradient(145deg, rgba(251, 191, 36, 0.05), rgba(249, 115, 22, 0.03));
+    border-color: rgba(251, 191, 36, 0.2);
+}
+
+.pending-count {
+    background: var(--accent-gradient);
+    color: white;
+    padding: 4px 12px;
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    font-size: 0.875rem;
+}
+
+.pending-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+}
+
+.pending-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-md);
+    background: var(--bg-tertiary);
+    border-radius: var(--radius-md);
+    transition: all var(--transition-fast);
+    text-decoration: none;
+    color: inherit;
+}
+
+.pending-item:hover {
+    background: var(--bg-glass);
+    transform: translateX(4px);
+}
+
+.pending-item-main {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    flex: 1;
+    min-width: 0;
+}
+
+.pending-case-id {
+    font-weight: 600;
+    color: var(--accent-primary);
+    white-space: nowrap;
+}
+
+.pending-title {
+    color: var(--text-primary);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.pending-assignee {
+    color: var(--text-muted);
+    font-size: 0.875rem;
+    white-space: nowrap;
+}
+
+.pending-item-badges {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    flex-shrink: 0;
+}
+
+/* SLA Badges */
+.sla-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 8px;
+    border-radius: var(--radius-sm);
+    font-size: 0.75rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.sla-overdue {
+    background: rgba(239, 68, 68, 0.15);
+    color: #ef4444;
+    animation: pulse 2s infinite;
+}
+
+.sla-at-risk {
+    background: rgba(251, 191, 36, 0.15);
+    color: #fbbf24;
+}

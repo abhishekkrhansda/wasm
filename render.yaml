@@ -1,0 +1,47 @@
+services:
+  # Backend Web Service
+  - type: web
+    name: wacms-backend
+    runtime: node
+    region: oregon
+    plan: free
+    rootDir: backend
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: JWT_SECRET
+        generateValue: true
+      - key: JWT_EXPIRES_IN
+        value: 24h
+      - key: CASE_ID_PREFIX
+        value: CASE
+      - key: DATABASE_URL
+        fromDatabase:
+          name: wacms-db
+          property: connectionString
+
+  # Frontend Static Site
+  - type: web
+    name: wacms-frontend
+    runtime: static
+    region: oregon
+    plan: free
+    rootDir: frontend
+    buildCommand: npm install && npm run build
+    staticPublishPath: dist
+    headers:
+      - path: /*
+        name: Cache-Control
+        value: no-cache
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
+
+databases:
+  - name: wacms-db
+    plan: free
+    region: oregon
