@@ -20,6 +20,8 @@ app.use(helmet());
 // CORS - allow multiple origins
 const allowedOrigins = [
     'http://localhost:3000',
+    'http://localhost:5173',
+    'https://wacms.netlify.app',
     'https://wacms.onrender.com',
     'https://wacms-frontend.onrender.com',
     process.env.CORS_ORIGIN
